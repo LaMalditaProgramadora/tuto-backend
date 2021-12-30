@@ -23,8 +23,8 @@ public class SpringFoxConfig {
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfo("API TEApprendo", "", "", "",
-				new Contact("GitHub", "https://github.com/LaMalditaProgramadora", ""), "",
+		return new ApiInfo("Tuto Backend", "", "", "",
+				new Contact("Repositorio", "https://github.com/LaMalditaProgramadora/tuto-backend", ""), "",
 				"", Collections.emptyList());
 	}
 }
