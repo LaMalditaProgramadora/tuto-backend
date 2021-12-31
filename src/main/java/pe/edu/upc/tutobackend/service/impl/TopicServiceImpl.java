@@ -32,7 +32,16 @@ public class TopicServiceImpl implements TopicService {
 
 	@Override
 	public Topic listById(int idTopic) {
-		return topicRepository.getById(idTopic);
+		return topicRepository.findById(idTopic).get();
 	}
 
+	@Override
+	public int deleteById(int idTopic) {
+		try {
+			topicRepository.deleteById(idTopic);
+			return Constants.RESULT_OK;
+		} catch (Exception e) {
+			return Constants.RESULT_ERROR_BD;
+		}
+	}
 }

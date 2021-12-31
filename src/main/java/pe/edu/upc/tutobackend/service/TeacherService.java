@@ -8,4 +8,5 @@ public interface TeacherService {
 	int save(Teacher teacher);
 	List<Teacher> list();
 	Teacher listById(int idTeacher);
+	int deleteById(int idTeacher);
 }

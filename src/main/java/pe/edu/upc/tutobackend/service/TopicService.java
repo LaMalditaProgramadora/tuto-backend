@@ -8,4 +8,5 @@ public interface TopicService {
 	int save(Topic topic);
 	List<Topic> list();
 	Topic listById(int idTopic);
+	int deleteById(int idTopic);
 }

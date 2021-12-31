@@ -32,7 +32,17 @@ public class TeacherServiceImpl implements TeacherService {
 
 	@Override
 	public Teacher listById(int idTeacher) {
-		return teacherRepository.getById(idTeacher);
+		return teacherRepository.findById(idTeacher).get();
 	}
 
+	@Override
+	public int deleteById(int idTeacher) {
+		try {
+			teacherRepository.deleteById(idTeacher);
+			return Constants.RESULT_OK;
+		} catch (Exception e) {
+			return Constants.RESULT_ERROR_BD;
+		}
+	}
+	
 }

@@ -32,7 +32,16 @@ public class TutorServiceImpl implements TutorService {
 
 	@Override
 	public Tutor listById(int idTutor) {
-		return tutorRepository.getById(idTutor);
+		return tutorRepository.findById(idTutor).get();
 	}
 
+	@Override
+	public int deleteById(int idTutor) {
+		try {
+			tutorRepository.deleteById(idTutor);
+			return Constants.RESULT_OK;
+		} catch (Exception e) {
+			return Constants.RESULT_ERROR_BD;
+		}
+	}
 }

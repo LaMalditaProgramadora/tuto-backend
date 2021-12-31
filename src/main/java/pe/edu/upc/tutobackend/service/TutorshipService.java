@@ -8,4 +8,5 @@ public interface TutorshipService {
 	int save(Tutorship tutorship);
 	List<Tutorship> list();
 	Tutorship listById(int idTutorship);
+	int deleteById(int idTutorship);
 }

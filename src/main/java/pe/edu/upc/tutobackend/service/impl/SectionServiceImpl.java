@@ -32,7 +32,16 @@ public class SectionServiceImpl implements SectionService {
 
 	@Override
 	public Section listById(int idSection) {
-		return sectionRepository.getById(idSection);
+		return sectionRepository.findById(idSection).get();
 	}
 
+	@Override
+	public int deleteById(int idSection) {
+		try {
+			sectionRepository.deleteById(idSection);
+			return Constants.RESULT_OK;
+		} catch (Exception e) {
+			return Constants.RESULT_ERROR_BD;
+		}
+	}
 }

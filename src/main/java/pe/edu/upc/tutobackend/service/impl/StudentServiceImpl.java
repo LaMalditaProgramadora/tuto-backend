@@ -32,7 +32,17 @@ public class StudentServiceImpl implements StudentService {
 
 	@Override
 	public Student listById(int idStudent) {
-		return studentRepository.getById(idStudent);
+		return studentRepository.findById(idStudent).get();
+	}
+	
+	@Override
+	public int deleteById(int idStudent) {
+		try {
+			studentRepository.deleteById(idStudent);
+			return Constants.RESULT_OK;
+		} catch (Exception e) {
+			return Constants.RESULT_ERROR_BD;
+		}
 	}
 
 }

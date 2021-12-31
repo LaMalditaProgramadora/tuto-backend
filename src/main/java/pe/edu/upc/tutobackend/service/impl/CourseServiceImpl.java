@@ -32,7 +32,17 @@ public class CourseServiceImpl implements CourseService {
 
 	@Override
 	public Course listById(int idCourse) {
-		return courseRepository.getById(idCourse);
+		return courseRepository.findById(idCourse).get();
+	}
+
+	@Override
+	public int deleteById(int idCourse) {
+		try {
+			courseRepository.deleteById(idCourse);
+			return Constants.RESULT_OK;
+		} catch (Exception e) {
+			return Constants.RESULT_ERROR_BD;
+		}
 	}
 
 }

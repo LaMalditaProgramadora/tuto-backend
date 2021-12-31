@@ -32,7 +32,16 @@ public class TutorshipServiceImpl implements TutorshipService {
 
 	@Override
 	public Tutorship listById(int idTutorship) {
-		return tutorshipRepository.getById(idTutorship);
+		return tutorshipRepository.findById(idTutorship).get();
 	}
 
+	@Override
+	public int deleteById(int idTutorship) {
+		try {
+			tutorshipRepository.deleteById(idTutorship);
+			return Constants.RESULT_OK;
+		} catch (Exception e) {
+			return Constants.RESULT_ERROR_BD;
+		}
+	}
 }

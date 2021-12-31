@@ -8,4 +8,5 @@ public interface SectionService {
 	int save(Section section);
 	List<Section> list();
 	Section listById(int idSection);
+	int deleteById(int idSection);
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,5 +50,18 @@ public class TutorController {
 			Tutor tutorCreate = tutorService.listById(result);
 			return ResponseEntity.ok(tutorCreate);
 		}
+	}
+	
+	@DeleteMapping(path = "/delete", produces = "application/json")
+	public ResponseEntity<?> deleteById(@RequestParam int idTutor) {
+		int result = tutorService.deleteById(idTutor);
+		ResponseDto response = new ResponseDto();
+		response.setIdResponse(result);
+		if (result == Constants.RESULT_ERROR_BD) {
+			response.setMessage("Error al eliminar");
+		} else {
+			response.setMessage("Eliminación exitosa");
+		}
+		return ResponseEntity.ok(response);
 	}
 }
